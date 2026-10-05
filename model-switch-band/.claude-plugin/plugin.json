@@ -1,6 +1,6 @@
 {
   "name": "model-switch-band",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "One-click button above the prompt that switches to the recommended model and effort by driving the app's own menus.",
   "author": { "name": "Venzor" },
   "types": "./types/index.d.ts"
