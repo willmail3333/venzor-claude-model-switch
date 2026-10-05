@@ -1,0 +1,11 @@
+{
+  "name": "venzor-tools",
+  "owner": { "name": "Venzor" },
+  "plugins": [
+    {
+      "name": "model-switch-band",
+      "source": "./model-switch-band",
+      "description": "One-click button above the prompt that switches Claude Code (desktop app, Mac) to the model and effort Claude just recommended."
+    }
+  ]
+}
