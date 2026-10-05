@@ -76,7 +76,6 @@ export const register: Register = on => {
               const out = await $.process.run(['/usr/bin/osascript', '-e', script(r, isSameModel)], { timeoutMs: 20000 })
               if (out.exitCode !== 0) throw new Error(out.stderr.trim() || `exit ${out.exitCode}`)
               await update($, applied, () => r.effort)
-              $.ui.toast(`Switched to ${r.name}${r.effort ? `, ${r.effort} effort` : ''}`)
               await update($, isHidden, () => true)
             } catch (err) {
               $.ui.toast(`Could not switch: ${String(err)}`)
