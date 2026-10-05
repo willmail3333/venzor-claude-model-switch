@@ -22,16 +22,24 @@ The Claude desktop app keeps its own saved model and effort for each chat. Plugi
 - The Claude desktop app, Code tab (tested with Claude Code engine 2.1.286)
 - A one-time macOS permission (below)
 
-## Install
+## Install (3 steps, about 2 minutes)
 
-1. Add the marketplace and install the plugin. Run these two commands:
+**1. Paste this into a Claude Code chat in the Claude app.** It installs the plugin for you. You do not need a terminal.
 
-       claude plugin marketplace add willmail3333/venzor-claude-model-switch
-       claude plugin install model-switch-band@venzor-tools
+    Please install a Claude Code plugin for me. The terminal command "claude"
+    may not be installed, so use the copy inside the Claude app. Find the
+    newest one with:
+    ls -d ~/Library/Application\ Support/Claude/claude-code/*/*/claude.app/Contents/MacOS/claude | sort -V | tail -1
+    Then, with that path, run these two commands:
+    <path> plugin marketplace add willmail3333/venzor-claude-model-switch
+    <path> plugin install model-switch-band@venzor-tools
+    Tell me what each command printed. Do not change anything else.
 
-2. Give `osascript` permission to press keys. Open System Settings, Privacy & Security, Accessibility (it may be titled "Device Control and Data Access"), click **+**, press Cmd+Shift+G, type `/usr/bin/osascript`, press Enter, click **Open**, and make sure its switch is on.
+(If you already use the `claude` terminal command, you can run the same two commands there: `claude plugin marketplace add willmail3333/venzor-claude-model-switch` and `claude plugin install model-switch-band@venzor-tools`.)
 
-3. In chats that are already open, type `/reload-plugins` once. New chats load it automatically.
+**2. Give `osascript` permission to press keys.** Open System Settings, Privacy & Security, Accessibility (it may be titled "Device Control and Data Access"), click **+**, press Cmd+Shift+G, type `/usr/bin/osascript`, press Enter, click **Open**, and make sure its switch is on.
+
+**3. Start a new chat.** In a chat that is already open, type `/reload-plugins` instead. After Claude's next reply, a button appears above the prompt box whenever the recommendation differs from your current model or effort.
 
 ## How it works
 
