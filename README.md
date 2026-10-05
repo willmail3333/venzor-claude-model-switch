@@ -2,7 +2,7 @@
 
 One click to switch Claude Code to the model and effort Claude just recommended.
 
-At the end of a reply, Claude writes a line like:
+The plugin asks Claude to end each reply with a line like:
 
     Model for next step: Opus 5.5, high effort
 
@@ -31,15 +31,12 @@ The Claude desktop app keeps its own saved model and effort for each chat. Plugi
 
 2. Give `osascript` permission to press keys. Open System Settings, Privacy & Security, Accessibility (it may be titled "Device Control and Data Access"), click **+**, press Cmd+Shift+G, type `/usr/bin/osascript`, press Enter, click **Open**, and make sure its switch is on.
 
-3. Tell Claude to end each reply with the recommendation line. Add this to your `~/.claude/CLAUDE.md`:
-
-       End every reply with one line naming the model and effort for the next step,
-       in exactly this form: "Model for next step: Opus 5.5, high effort".
-       Models: Opus, Sonnet, Fable, Haiku. Effort: low, medium, high, xhigh, max.
-
-4. In chats that are already open, type `/reload-plugins` once. New chats load it automatically.
+3. In chats that are already open, type `/reload-plugins` once. New chats load it automatically.
 
 ## How it works
+
+On every message you send, the plugin quietly adds a short note asking Claude to end its reply with the recommendation line, so there is nothing to configure. Claude may occasionally skip the line; then no button shows.
+
 
 The plugin runs a short AppleScript through `osascript`. It presses the app's shortcuts: Cmd+Shift+I opens the model menu and a number picks the model (1 Opus, 2 Fable, 3 Sonnet, 4 Haiku). Cmd+Shift+E opens the effort slider, which the script moves with Home and the arrow keys, then closes. It runs only when you click the button. See `model-switch-band/hooks/register.tsx`; it is short enough to read.
 
