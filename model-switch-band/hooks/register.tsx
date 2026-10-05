@@ -41,7 +41,12 @@ const parse = (answer: string): Rec | null => {
   return { alias, name, effort }
 }
 
+const NOTE =
+  'Plugin note (model-switch-band): end your reply with one final line in exactly this form, naming the model and effort that best fit the user\'s next step: "Model for next step: Sonnet 5.5, low effort". Models: Opus 5.5, Sonnet 5.5, Fable 5.1, Haiku 4.5. Effort: low, medium, high, xhigh, max. Suggest a bigger model or higher effort only when the next step clearly needs it; otherwise keep the current setting.'
+
 export const register: Register = on => {
+  on('prompt.submit', ($, e, next) => next({ ...e, context: [...(e.context ?? []), NOTE] }))
+
   on('turn.complete', async ($, e, next) => {
     if (!e.agentId) {
       const found = parse(e.answer)
